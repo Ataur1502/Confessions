@@ -5,51 +5,45 @@
   <title>Anonymous Confessions</title>
   <style>
     body {
-      background: #0c0a09;
-      color: #ff7b00;
       font-family: 'Poppins', sans-serif;
+      background: #0c0a09;
+      color: #fff;
       padding: 20px;
-    }
-    h1 {
       text-align: center;
-      font-size: 2em;
-      margin-bottom: 30px;
     }
     .confession {
-      background: #1e1e1e;
-      padding: 20px;
-      margin: 15px auto;
+      background: #1a1a1a;
+      border-left: 4px solid #ff7b00;
+      margin: 20px auto;
+      padding: 15px 25px;
+      width: 80%;
       border-radius: 10px;
-      max-width: 600px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      color: #fff;
-      font-size: 16px;
-      white-space: pre-wrap;
+      box-shadow: 0 2px 8px rgba(255, 123, 0, 0.3);
     }
   </style>
 </head>
 <body>
-  <h1>Anonymous Confessions</h1>
-  <div id="confessionsList">Loading confessions...</div>
+  <h1>Anonymous Confessions 🔐</h1>
+  <div id="confessionList">Loading...</div>
 
   <script>
-    fetch('https://opensheet.elk.sh/1AMJiQULyuJe0kBiqk12ZesChWyUgFgu9A4jfocyn_fs/Sheet1')
-      .then(res => res.json())
-      .then(data => {
-        const list = document.getElementById('confessionsList');
-        list.innerHTML = ''; // Clear loading text
-
-        // Show latest confession first
-        data.reverse().forEach(row => {
-          const div = document.createElement('div');
-          div.className = 'confession';
-          div.innerText = row.textInput || "(empty)";
-          list.appendChild(div);
+    fetch("https://opensheet.elk.sh/1AMJiQULyuJe0kBiqk12ZesChWyUgFgu9A4jfocyn_fs/Sheet1")
+      .then((res) => res.json())
+      .then((data) => {
+        const list = document.getElementById("confessionList");
+        list.innerHTML = "";
+        data.reverse().forEach(item => {
+          if (item.Confession && item.Confession.trim() !== "") {
+            const div = document.createElement("div");
+            div.className = "confession";
+            div.innerText = item.Confession;
+            list.appendChild(div);
+          }
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
-        document.getElementById('confessionsList').innerText = 'Failed to load confessions 😢';
+        document.getElementById("confessionList").innerText = "Failed to load confessions 😢";
       });
   </script>
 </body>
