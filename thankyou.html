@@ -1,1 +1,114 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0c0a09, #0c0a09, #090609, #ff7b00);
+      background-size: 400% 400%;
+      animation: bgAnimation 10s infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .background-text {
+      position: absolute;
+      font-size: 20px;
+      color: #ffffff;
+      opacity: 0.06;
+      font-weight: 600;
+      width: 300px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .text1 { top: 10%; left: 5%; transform: rotate(-10deg); }
+    .text2 { top: 20%; left: 60%; transform: rotate(15deg); }
+    .text3 { top: 40%; left: 25%; transform: rotate(-8deg); }
+    .text4 { top: 60%; left: 70%; transform: rotate(12deg); }
+    .text5 { top: 75%; left: 10%; transform: rotate(-5deg); }
+    .text6 { top: 30%; left: 80%; transform: rotate(8deg); }
+    .text7 { top: 50%; left: 50%; transform: rotate(0deg); }
+    .text8 { top: 15%; left: 75%; transform: rotate(-7deg); }
+    .text9 { top: 85%; left: 35%; transform: rotate(10deg); }
+    .text10 { top: 5%; left: 45%; transform: rotate(-12deg); }
+
+    .thank-you-content {
+      z-index: 2;
+      color: white;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .thank-you-content h1 {
+      font-size: 48px;
+      margin: 0 0 20px;
+      text-shadow: 0 0 10px rgba(255, 102, 0, 0.7);
+    }
+
+    .thank-you-content p {
+      font-size: 18px;
+      color: #eee;
+    }
+
+    .home-button {
+      background: linear-gradient(135deg, #fb700c, #f38805);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+      margin-top: 20px;
+    }
+
+    .home-button:hover {
+      background: linear-gradient(135deg, #f38805, #fb700c);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Confession-style Background Texts -->
+  <div class="background-text text1">"I still think about you every night..."</div>
+  <div class="background-text text2">"I wish I had told you how much you meant."</div>
+  <div class="background-text text3">"The silence hurt more than the goodbye."</div>
+  <div class="background-text text4">"Your smile still haunts my dreams."</div>
+  <div class="background-text text5">"Maybe in another lifetime..."</div>
+  <div class="background-text text6">"I pretended I moved on, but I didn’t."</div>
+  <div class="background-text text7">"You were never just a chapter."</div>
+  <div class="background-text text8">"I let go, but the memories stayed."</div>
+  <div class="background-text text9">"Some love stories don’t end, they just fade."</div>
+  <div class="background-text text10">"I wrote this for you, hoping you’d feel it."</div>
+
+  <!-- Main Thank You Message -->
+  <div class="thank-you-content">
+    <h1>Thank You!</h1>
+    <p>Your response has been successfully submitted.</p>
+    <button class="home-button" onclick="window.location.href='index.html'">Back to Home</button>
+  </div>
+
+</body>
+</html>
