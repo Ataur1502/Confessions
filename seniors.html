@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
 
   <style>
-    /* [All your existing CSS remains unchanged] */
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0c0a09, #0c0a09, #090609, #ff7b00);
@@ -160,15 +159,13 @@
         return;
       }
 
-      // Submit to Google Apps Script
       fetch("https://script.google.com/macros/s/AKfycbwJgh0klS2bONI8XfzYhIb8ExyrcorQ7TbSzERTCM8xf2fPyTRlb-48XwNDjYqKBTRs_Q/exec", {
         method: "POST",
         body: new URLSearchParams({ textInput: confession }),
         mode: "no-cors"
       })
       .then(() => {
-        alert("✅ Confession submitted anonymously!");
-        document.getElementById("textInput").value = "";
+        window.location.href = "thankyou.html";
       })
       .catch((error) => {
         console.error("Submission error:", error);
