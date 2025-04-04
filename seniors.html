@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confession Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* [All your existing CSS remains unchanged] */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0c0a09, #0c0a09, #090609, #ff7b00);
+      background-size: 400% 400%;
+      animation: bgAnimation 10s infinite alternate;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .background-text {
+      position: absolute;
+      font-size: 240px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.08);
+      text-transform: uppercase;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    form {
+      background: rgba(12, 11, 10, 0.95);
+      opacity: 0.9;
+      padding: 30px;
+      border-radius: 15px;
+      border: 2px solid #ff7b00;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      width: 400px;
+      max-width: 90%;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      animation: floatEffect 3s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes floatEffect {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 18px;
+      color: #f9820a;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    label:hover {
+      color: #ff8716;
+      text-shadow: 0 0 10px rgba(255, 138, 22, 0.8);
+    }
+
+    label::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #ff165d;
+      margin: 5px auto 0;
+      border-radius: 5px;
+      transition: width 0.3s ease-in-out;
+    }
+
+    label:hover::after {
+      width: 100px;
+    }
+
+    textarea {
+      width: 90%;
+      height: 340px;
+      padding: 12px;
+      border: 2px solid #ff8133;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #f8f7fa;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    textarea:focus {
+      border-color: #fcfeff;
+      background: #fff0f3;
+    }
+
+    button {
+      background: linear-gradient(135deg, #fb700c, #f38805);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #fb700c, #fb700c);
+      transform: translateY(-3px);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="background-text">CONFESSION<br>CONFESSION<br>CONFESSION</div>
+
+  <form id="confessionForm">
+    <label for="textInput">Ippadki cheppaka pothe inka eppadki cheppalev bro... chusko mari</label>
+    <br />
+    <h4 style="color: #f8f7fa;">(Your Identity Will Not Be Revealed)</h4>
+    <textarea id="textInput" name="textInput" rows="4" cols="90"></textarea><br /><br />
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("confessionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const confession = document.getElementById("textInput").value.trim();
+
+      if (confession === "") {
+        alert("Please write something before submitting 🙏");
+        return;
+      }
+
+      // Submit to Google Apps Script
+      fetch("https://script.google.com/macros/s/AKfycbwJgh0klS2bONI8XfzYhIb8ExyrcorQ7TbSzERTCM8xf2fPyTRlb-48XwNDjYqKBTRs_Q/exec", {
+        method: "POST",
+        body: new URLSearchParams({ textInput: confession }),
+        mode: "no-cors"
+      })
+      .then(() => {
+        alert("✅ Confession submitted anonymously!");
+        document.getElementById("textInput").value = "";
+      })
+      .catch((error) => {
+        console.error("Submission error:", error);
+        alert("❌ Something went wrong. Please try again.");
+      });
+    });
+  </script>
+</body>
+</html>
